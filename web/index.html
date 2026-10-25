@@ -1,0 +1,58 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Accent Coach</title>
+<link rel="stylesheet" href="/static/app.css">
+<body>
+<div class="app">
+
+  <aside class="side" id="side">
+    <div class="side-top">
+      <button class="newbtn" id="newbtn"><span class="plus">+</span> New session</button>
+    </div>
+    <div class="convos" id="convos"></div>
+    <div class="side-foot">
+      <a class="mlink" href="/train" target="_blank">Training monitor</a>
+      <div class="mstat" id="mstat">checking model</div>
+    </div>
+  </aside>
+
+  <main class="chat">
+    <header class="chead">
+      <button class="burger" id="burger" aria-label="menu"><i></i><i></i><i></i></button>
+      <div class="ctitle" id="ctitle">Accent Coach</div>
+      <div class="cbadge" id="cbadge"></div>
+    </header>
+
+    <div class="stream" id="stream">
+      <div class="empty" id="empty">
+        <div class="orb"></div>
+        <h2>Speak, and I will listen</h2>
+        <p>This session is voice only. Press the microphone, say a few sentences,
+           and you will get your accent reading plus a pronunciation and fluency
+           review measured from the audio itself.</p>
+        <ul class="hints">
+          <li>Speak for at least four seconds so there is enough to measure</li>
+          <li>A quiet room and a steady distance from the microphone help a lot</li>
+          <li>Natural conversation works better than reading aloud</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="composer">
+      <canvas class="viz" id="viz" height="44"></canvas>
+      <div class="ctrls">
+        <div class="timer" id="timer"></div>
+        <button class="mic" id="mic" aria-label="record">
+          <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor"
+               stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="2.5" width="6" height="11.5" rx="3"/>
+            <path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v3.5"/>
+          </svg>
+        </button>
+        <div class="state" id="state">press to speak</div>
+      </div>
+    </div>
+  </main>
+</div>
+<script src="/static/app.js"></script>

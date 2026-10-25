@@ -1,0 +1,94 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Accent Model Training</title>
+<link rel="stylesheet" href="/static/train.css">
+<body>
+<header class="bar">
+  <div class="brand">
+    <span class="dot" id="dot"></span>
+    <h1>Accent Model <span>training monitor</span></h1>
+  </div>
+  <div class="head-right">
+    <div class="phase" id="phase">waiting for training to start</div>
+    <div class="clock" id="clock">00:00</div>
+  </div>
+</header>
+
+<div class="progwrap"><div class="prog" id="prog"></div></div>
+
+<main>
+  <section class="tiles">
+    <div class="tile accent"><label>val macro F1</label><b id="t_f1">0.000</b><i id="d_f1"></i></div>
+    <div class="tile"><label>val accuracy</label><b id="t_acc">0.000</b><i id="d_acc"></i></div>
+    <div class="tile"><label>balanced accuracy</label><b id="t_bal">0.000</b><i id="d_bal"></i></div>
+    <div class="tile"><label>best so far</label><b id="t_best">0.000</b><i>macro F1</i></div>
+    <div class="tile"><label>train loss</label><b id="t_loss">0.000</b><i id="d_loss"></i></div>
+    <div class="tile"><label>epoch</label><b id="t_ep">0</b><i id="d_ep">of 0</i></div>
+  </section>
+
+  <section class="grid">
+    <div class="card span2">
+      <h2>Learning curve <em>loss and validation macro F1</em></h2>
+      <canvas id="curve" height="250"></canvas>
+      <div class="legend">
+        <span><i class="sw loss"></i>train loss</span>
+        <span><i class="sw f1"></i>val macro F1</span>
+        <span><i class="sw lr"></i>learning rate</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>WavLM layer reliance <em>learned softmax weights</em></h2>
+      <p class="hint">The head learns how much to trust each frozen encoder layer.
+         Watch the mix shift as training discovers which depth carries accent.</p>
+      <div id="layers" class="layers"></div>
+    </div>
+  </section>
+
+  <section class="grid">
+    <div class="card span2">
+      <h2>Network behaviour <em>live activation and gradient flow</em></h2>
+      <canvas id="net" height="300"></canvas>
+      <div class="legend">
+        <span><i class="sw act"></i>node brightness = activation magnitude</span>
+        <span><i class="sw grad"></i>edge thickness = gradient norm</span>
+        <span><i class="sw dead"></i>ring = inactive units</span>
+      </div>
+    </div>
+    <div class="card">
+      <h2>Module statistics</h2>
+      <table class="stats" id="modstats"><tbody></tbody></table>
+    </div>
+  </section>
+
+  <section class="grid">
+    <div class="card span2">
+      <h2>Per accent F1 <em>all 23 classes, validation</em></h2>
+      <div id="classes" class="classes"></div>
+    </div>
+    <div class="card">
+      <h2>Confusion matrix</h2>
+      <canvas id="cm" height="300"></canvas>
+      <div class="hint" id="cmhint">rows = true accent, columns = predicted</div>
+    </div>
+  </section>
+
+  <section class="grid">
+    <div class="card">
+      <h2>Step loss <em>within epoch</em></h2>
+      <canvas id="steps" height="150"></canvas>
+    </div>
+    <div class="card">
+      <h2>Hyper parameter trials</h2>
+      <table class="stats" id="trials"><tbody></tbody></table>
+    </div>
+    <div class="card">
+      <h2>Ensemble members</h2>
+      <table class="stats" id="seeds"><tbody></tbody></table>
+    </div>
+  </section>
+
+  <p class="foot" id="msg"></p>
+</main>
+<script src="/static/train.js"></script>

@@ -1,0 +1,19 @@
+# CPU only install:
+#   pip install --index-url https://download.pytorch.org/whl/cpu \
+#       --extra-index-url https://pypi.org/simple -r requirements.txt
+torch==2.14.0
+torchaudio==2.11.0
+transformers==5.17.0
+faster-whisper==1.2.1
+pyarrow==25.0.1
+scikit-learn==1.9.1
+pandas==3.0.5
+numpy==2.5.3
+scipy==1.18.1
+soundfile==0.14.0
+g2p_en
+fastapi==0.141.1
+uvicorn[standard]==0.53.0
+python-multipart
+requests==2.34.2
+reportlab==5.0.1
